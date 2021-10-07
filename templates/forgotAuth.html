@@ -1,0 +1,437 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block body-style %}
+<style>
+    body{
+	background-color: white;
+	font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	color: #333333;
+}
+
+.header{
+	width: 650px;
+	height: 56px;
+	margin: auto;
+}
+
+.header a{
+	color: black;
+	text-decoration: none;
+}
+
+#logo{
+	float: left;
+	padding-top: 35px;
+}
+
+#signUp{
+	float: right;
+	padding-top: 65px;
+	padding-right: 10px;
+	color: #666;
+}
+
+#signUp li{
+	display: inline;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#logIn{
+	border-left: 1px solid #666;
+}
+
+.signupBody{
+	width: 650px;
+	height: 300px;
+	display: block;
+	background-color: white;
+	box-shadow: 1px 3px 8px #777777;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 35px;
+}
+
+h2{
+	font-size: 26px;
+	font-weight: bold;
+	color: #333;
+	padding-top: 50px;
+	padding-left: 50px;
+	margin-top: 50px;
+	margin-bottom: 10px;
+}
+
+.left-column{
+	border-right: 1px solid #CCC;
+	width: 425px;
+	height: 200px;
+	float: left;
+}
+
+#email-form, #otp-form, #forgot-form{
+	margin-left: 50px;
+	margin-top: 45;
+}
+
+h5{
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-size: 14px;
+}
+
+form input{
+	border-radius: 5px;
+	border: 1px solid #CCC;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+	outline: none;
+	font-size: 14px;
+  font-weight: bold;
+	padding: 2px;
+	color: #666;
+	width: 260px;
+	height: 24px;
+}
+
+#country{
+	width: 270px;
+	height: 30px;
+}
+
+#zipcode{
+	width: 74px;
+	height: 24px;
+}
+
+#checkbox{
+	float: left;
+	width: 13px;
+	height: 13px;
+	margin-top: 18px;
+	margin-right: 5px;
+}
+
+#agreement{
+	float: left;
+	margin-top: 20px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+}
+
+#agreement a{
+  text-decoration: none;
+  color: #006EA4;
+}
+
+#agreement a:hover{
+  text-decoration: underline;
+}
+
+#button, #buttonotp, #buttonpassword{
+	float: left;
+	width: 82px;
+	height: 30px;
+	cursor: pointer;
+	color: white;
+	background-color: red;
+	background-image: -webkit-linear-
+		gradient(top, red, red);
+	margin-top: 10px;
+	margin-right: 100px;
+	border: 1px solid;
+	border-top-color: red;
+	border-right-color: red;
+	border-left-color: red;
+	border-bottom-color: #ad6704;
+}
+
+.right-column{
+	float: left;
+	width: 160px;
+	height: 140px;
+	background: #f5f5f5;
+	font-size: 11px;
+	margin-left: 25px;
+	padding-bottom: 19px;
+	padding-right: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.right-column ul{
+	padding-left: 35px;
+	margin-right: 10px;
+}
+
+.right-column li{
+	margin-bottom: 5px;
+}
+
+h3{
+	padding-left: 10px;
+}
+
+.footer{
+	width: 550px;
+	margin: auto;
+}
+
+.footer li{
+	margin-left: 10px;
+	font-size: 11px;
+	display: inline;
+	text-decoration: none;
+	color: #333;
+}
+
+.footer a{
+	text-decoration: none;
+}
+
+.footer li:hover{
+	color: #7e07bf;
+	text-decoration: underline;
+}
+.hustl{
+    color: red;
+    font-family: 'Caveat', cursive;
+    font-size: 40px;
+    margin-left: 65px;
+    margin-bottom: 50px;
+    filter: drop-shadow(5px 5px 5px  black);
+}
+.cu{
+    font-weight:800;
+    font-size: 40px;
+    font-family: 'Caveat', cursive;
+    color: rgb(0, 0, 0);
+    letter-spacing: 7px;
+}
+.CU{
+    font-weight: 800;
+    font-size: xx-large;
+    font-family: 'Caveat', cursive;
+    color: red;
+    word-spacing: 1px;
+    filter: drop-shadow(2px 1px 1px  rgb(84, 81, 81));
+}
+.hustlers{
+    color: black;
+
+}
+.bt2{
+	background-color: red;
+}
+</style>
+{% endblock %}
+
+{% block body-content %}
+  <div class="header">
+    <div id="logo">
+        <span class="CU" > CU  <span class="Cu hustlers">hustlers</span>  </span>
+    </div>
+    <div id='signUp'>
+      <ul>
+        <b>
+		<a href="{% url 'Loginauth' %}"><li>Go back to login</li></a>
+		</b>
+      </ul>
+    </div>
+  </div>
+
+  <div class="signupBody">
+    <h2>Password assistance</h2>
+    <div class="left-column">
+      <form id="email-form">
+        <h5>Your Email</h5>
+        {% csrf_token %}
+        <input style="display:none" name="type" id="type1" value="email-form">
+        <input id="email" type="email" name="email" placeholder="example@gmail.com">
+        <input id="button" class="bt2" type="submit" value="Send OTP">
+      </form>
+      <form id="otp-form">
+        <h5>Enter OTP</h5>
+        {% csrf_token %}
+        <input style="display:none" name="type" id="type2" value="otp-form">
+        <input id="otp" type="text" name="otp" pattern="[0-9]+">
+        <input id="buttonotp" class="bt2" type="submit" value="Submit">
+      </form>
+      <form id="forgot-form">
+        {% csrf_token %}
+        <input style="display:none" name="type" id="type3" value="forgot-form">
+        <h5>Enter your new Password</h5>
+        <input id="password" type="password" name="password">
+        <h5>Re-enter your new Password</h5>
+        <input id="repassword" type="password" name="repassword">
+        <input id="buttonpassword" class="bt2" type="submit" value="Change">
+      </form>
+      <br><br>
+      <p style="color:red;margin-left:50px;" id="error">
+<!--        The email you entered doesn't exist in database.-->
+      </p>
+    </div>
+
+    <div class="right-column">
+      <h3>Why You'll Love it</h3>
+      <ul>
+        <li>See all Your accounts in one place</li>
+        <li>Set a budget and pay down your debt</li>
+        <li>Find the best ways to grow your money</li>
+        <li>Stay <u>safe and secure</u></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer">
+    <ul>
+      <a href>
+        <li>Support Community</li>
+      </a>
+      <a href>
+        <li>Terms of Use</li>
+      </a>
+      <a href>
+        <li>Privacy</li>
+      </a>
+      <a href>
+        <li>Legal and Trademark Notices</li>
+      </a>
+      <a href>
+        <li>About Intuit</li>
+      </a>
+    </ul>
+  </div>
+{% endblock %}
+
+{% block body-script %}
+<script>
+  $(document).bind("contextmenu",function(e) {
+   e.preventDefault();
+  });
+
+  $('#email-form').show();
+  $('#otp-form').hide();
+  $('#forgot-form').hide();
+
+  $(document).on('submit', '#email-form', function(e){
+      e.preventDefault();
+
+      var email = $('#email').val();
+      var type = $('#type1').val();
+      $('button').disabled=true;
+      if (email.length == 0){
+        $('#error').html("Input Fields cann't be empty<br>")
+      }
+      else{
+        console.log(email+' '+type)
+        $('#error').html("<b style='color:green'>Loading... Please wait</b><br>")
+        $.ajax({
+              type: 'POST',
+              url: /forgotAuth/,
+              data:{
+                  'email':email,
+                  'type':type,
+                  csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+              },
+              success:function(response){
+                  if(response.status == "Success1"){
+                      console.log('success'+' '+email+' '+type)
+                      $('#error').html("<p style='color:blue'>Verification OTP has sent to your registered email id. </p><p>OTP valid only for next 15 min.</p>")
+
+                      $('#email-form').hide();
+                      $('#otp-form').show();
+                  }
+                  else{
+                      $('#error').html(response.status+"<br>");
+                  }
+              }
+
+          });
+      }
+  });
+  $(document).on('submit', '#otp-form', function(e){
+      e.preventDefault();
+
+      var otp = $('#otp').val();
+      var email = $('#email').val();
+      var type = $('#type2').val();
+      if (otp.length == 0){
+        $('#error').html("Input Fields cann't be empty<br>")
+      }
+      else{
+        console.log(otp+' '+type)
+        $.ajax({
+              type: 'POST',
+              url: /forgotAuth/,
+              data:{
+                  'email':email,
+                  'otp':otp,
+                  'type':type,
+                  csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+              },
+              success:function(response){
+                  if(response.status == "Success2"){
+                    console.log('success'+' '+otp+' '+type)
+                      $('#error').html("<br>")
+
+                      $('#otp-form').hide();
+                      $('#forgot-form').show();
+
+                  }
+                  else{
+                      $('#error').html(response.status+"<br>");
+                  }
+              }
+
+          });
+      }
+  });
+  $(document).on('submit', '#forgot-form', function(e){
+      e.preventDefault();
+
+      var email = $('#email').val();
+      var password = $('#password').val();
+      var repassword = $('#repassword').val();
+      var otp = $('#otp').val();
+      var type = $('#type3').val();
+      if (password.length == 0 || repassword.length == 0){
+        $('#error').html("Input Fields cann't be empty<br>")
+      }
+      if (password.length < 8 || repassword.length < 8){
+        $('#error').html("Password should be atleast 8 character long.<br>")
+      }
+      else if(repassword != password){
+        $('#error').html("Both passwords doesn't match<br>")
+      }
+      else{
+        console.log(password+' '+type)
+        $.ajax({
+              type: 'POST',
+              url: /forgotAuth/,
+              data:{
+                  'email':email,
+                  'password':password,
+                  'otp':otp,
+                  'type':type,
+                  csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+              },
+              success:function(response){
+                  if(response.status == "Success3"){
+                    console.log('success '+email+' '+password+' '+type)
+                    if(confirm("Password changed Successfully")){}
+                    window.location = "{% url 'Loginauth' %}"
+                  }
+                  else{
+                      $('#error').html(response.status+"<br>");
+                  }
+              }
+
+          });
+      }
+  });
+</script>
+{% endblock %}
